@@ -1,0 +1,83 @@
+// estilos de la parte de carrito
+.carrito-main-section {
+   background-color:#f3e2e8;
+   margin:30px 50px;
+   display:flex;
+   flex-direction:column;
+   justify-content: space-between;
+   height: 140vh;
+   border-radius: 5px;
+   .carrito__productos-container {
+      margin:20px;
+      display:flex;
+      flex-direction: column;
+      overflow-Y: auto;
+      .carrito__producto {
+         background-color: $colorCuarto;
+         display:flex;
+         margin-bottom: 10px;
+         padding: 20px;
+         align-items: center;
+         gap: 40px;
+         border-radius:5px;
+         .carrito__producto-img {
+            height:50px;
+            width:50px;
+            object-fit: cover;
+            transition: transform .5s ease;
+            &:hover {
+               transform: scale(1.3);
+            }
+         }
+         h3 {
+            font-size: 30px;
+         }
+         h4 {
+            font-size: 25px;
+         }
+         .eliminarBtn {
+            margin-left: 50vw;
+            transition: all .4s ease;
+            &:hover {
+               cursor: pointer;
+               color: rgb(240, 108, 108);
+            }
+         }
+      }
+   }
+   .carrito__productos-info {
+      display:flex;
+      background-color:$colorTercero;
+      padding: 20px;
+      margin:20px;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 12px 12px ;
+      .carrito__productos-precio{
+         display:flex;
+         gap: 40px;
+         h3 {
+            font-size:20px;
+         }
+         h4 {
+            font-size:18px;
+         }
+      }
+      .carrito__productos-info-comprar {
+         font-size:20px;
+         height: 50px;
+         width:130px;
+         padding: 15px;
+         background-color:#ffffff;
+         color:#000;
+         border-radius: 10px;
+         text-align: center;
+         transition: all .5s ease;
+         &:hover {
+            cursor:pointer;
+            background-color: #000000;
+            color:#ffffff;
+         }
+      }
+   }
+}

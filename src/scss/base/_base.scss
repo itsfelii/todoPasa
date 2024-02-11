@@ -1,0 +1,279 @@
+* {
+   font-size:30px;
+   font-weight: 80px;
+   font-family: 'Saira Condensed', sans-serif;
+   // reset
+   box-sizing: border-box;
+   margin:0;
+   padding:0;
+}
+body {
+   background-color: #ffffff;
+   overflow-x: hidden;
+}
+// animacion de la barra de busqueda 
+@keyframes rotate {
+   0% {
+      transform: rotate(90deg);
+   }
+   100% {
+      transform: rotate(450deg);
+   }
+}
+header {
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   .nav {
+      z-index:5;
+      position:fixed;
+      top:0;
+      background-color:#d3d3d3;
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+      width:100vw;
+      height:60px;
+      padding: 5px;
+      border-radius:5px;
+      .nav-section-1 {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content:end;
+         .nav-section-1-1 {
+            position: absolute;
+            right:42.5vw;
+            a {
+               text-decoration: none;
+               .nav__logo {
+                  font-size: 30px;
+                  font-family:'Dancing Script', cursive;
+                  color: #000;
+                  width:160px;
+                  height:40px;
+                  transition: transform .9s;
+                  &:hover {cursor:pointer;}
+               }
+            }
+         }
+         .nav-section-1-2 {
+            display: flex;
+            align-items: center;
+            .nav__user {
+               width:40px;
+               height:40px;
+               border-radius: 50%;
+               background-color:#000000;
+               transition: transform .9s;
+               &:hover {cursor:pointer;}
+            }
+            .dropDownProfile {
+               display: flex;
+               flex-direction: column;
+               align-items: flex-start;
+               color: #d3d3d3;
+               border-radius: 12px;
+               position: absolute;
+               top: 1.75rem;
+               padding: 26px;
+               right: 0.8rem;
+               z-index: -10;
+               width: 400px;
+               height: 400px;
+               list-style-type: none;
+               font-size: 20px;
+               background-color: #f4f5f6;
+               hr {
+                  width: 100%;
+                  height: 3px;
+                  color: #000000;
+               }
+               li {
+                  width: 100%;
+                  display: flex;
+                  justify-content:start;
+                  flex-direction: row-reverse;
+                  align-items: center;
+                  &:hover {
+                     outline: #00f;
+                  }
+                  div {
+                     margin: 10px 20px 0 0;
+                     width: 50px;
+                     height: 50px;
+                     text-align: center;
+                     i {
+                        transition: all .8s;
+                        color: #000;
+                     }
+                     &:hover > i {
+                        cursor:pointer;
+                        transform: scale(1.63);
+                        color: #979797;
+                     }
+                  }
+
+                  button {
+                     background-color: inherit;
+                     border: none;
+                     &:hover {
+                        cursor: pointer;
+                     }
+                  }
+                  &:first-child {
+                     color: #bbbbbb;
+                     justify-content: center;
+                  }
+               }
+            }
+            
+            .nav__search-container {
+               margin-right: 15px;
+               width: 38px;
+               height: 32px;
+               display: flex;
+               padding: 10px;
+               align-items: center;
+               background-color:#fff;
+               border-radius: 20px;
+               justify-content: space-between;
+               transition: all 1s ease;
+               .nav__search-input {
+                  border: none;
+                  width:97%;
+                  outline: none;
+                  font-size: 15px;
+               }
+               &:hover {
+                  outline: auto;
+                  width: 30vw;
+               }
+               &:hover > i {
+                  animation: rotate .7s ease;
+               }
+               i {
+                  &:hover {
+                     cursor: pointer;
+                  }
+               }
+            }
+            a {
+               text-decoration: none; 
+               color: #000;
+               .nav__shopping-cart {
+                  display:flex;
+                  align-items:center;
+                  height:50px;
+                  margin: 0 15px;
+                  transition: all .9s;
+                  &:hover {cursor:pointer;}
+                  i {
+                     margin-right:5px;
+                  }
+               }
+               .newCartItem {
+                  color: #969696;
+               }
+            }
+            
+         }
+      }
+   }
+   .nav-section-2 {
+      margin: 60px 0 0 0;
+      width: 100%;
+      background-color:#d3d3d3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .nav__filter {
+         padding: 5px;
+         display: flex;
+         justify-content: center;
+         align-items: end;
+         gap: 20px;
+         width:70%;
+         height:40px;
+         text-align:center;
+         padding-top: 4px;
+         color: #000000;
+         a {
+            font-size:20px;
+            text-decoration: none;
+            color: #000;
+         }
+         .active {
+            text-decoration: underline;
+         }
+      }
+   }
+}
+// footer 
+footer {
+   margin: 150px 0 0 0;
+   width:100%;
+   background-color:#f58f9977;
+   height:40vh;
+   box-shadow: 0 10px 100px #e6848e; 
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction:column;
+   .redes-sociales {
+      margin:20px;
+      display:flex;
+      width:80%;
+      justify-content: center;
+      align-items:center;
+      i {
+         margin: 0 10px;
+      }
+      .redes-sociales-bars {
+         height:3px;
+         width:40%;
+         background-color:#525050;
+         margin: 0 20px;
+      }
+   }
+   .cookies-container {
+      display:flex;
+      flex-direction:column;
+      align-items: center;
+      h3 {
+         font-size: 30px;
+      } 
+      a {
+         text-decoration:none;
+         color:#000;
+         h4 {
+         font-size: 20px;
+         }
+      }
+      .cookies {
+         margin:20px;
+         display:flex;
+         gap: 20px;
+         justify-content: center;
+         align-items: end;
+         width:100vw;
+         .cookies-bar {
+            height:30px;
+            width:3px;
+            background-color:#525050;
+         }
+         a {
+            text-decoration:none;
+            h4 {
+               color:#e6848e;
+               font-size:20px;
+               &:hover {
+                  text-decoration: underline;
+                  text-decoration-thickness: 1.1px;
+                  text-decoration-color:#e6848e;
+               }
+            }
+         }
+      }
+   }
+}
