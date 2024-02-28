@@ -4,6 +4,8 @@
    margin: 20px;
    display: flex;
    justify-content: center;
+   opacity: 0 ;
+   transition: opacity .5s ease;
    .gran-carousel__item-container {
       width:100vw;
       height:80vh;
@@ -57,12 +59,15 @@
       }
    }
 }
+// loaded animation -- lazy load
 // espacio sectorizado 
 section[id="grid-display-container"] {
    display:flex;
    align-items: center;
    flex-direction: column;
    margin:100px 0;
+   opacity: 0;
+   transition: opacity .5s ease;
    h2 {
       font-size: 70px;
       align-self: flex-start;
@@ -78,7 +83,8 @@ section[id="grid-display-container"] {
          text-decoration: none;
          color: #000;
          height: 100%;
-         width: 25%;
+         max-width: 25%;
+         min-width: 200px;
          background-color: #ffffff;
          display: flex;
          flex-direction: column;

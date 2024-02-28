@@ -1,0 +1,100 @@
+.stockManager-section {
+   margin: 50px 0 0 0;
+   display: flex;
+   justify-content: center;
+   height: 100vh;
+
+   .stockManager-container {
+      padding: 20px;
+      background-color: #cecece;
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .stockManager__admin-panel {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         border-radius: 10px;
+         width: 100%;
+         height: 100px;
+         background-color: #918f8f;
+         padding: 0 20px;
+
+         .stockmanager__admin-panel-img-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            img {
+               width: 80px;
+               object-fit: cover;
+               height: 80px;
+               border-radius: 30%;
+               padding: 3px;
+               border: 2px solid #cecece;
+            }
+         }
+
+         .stockManager__admin-panel-productos {
+            background-color: #f00;
+            width: 15%;
+            height: 70px;
+            border-radius: 20px;
+         }
+
+         .stockManager__admin-panel-agregar-productos {
+            border-radius: 20px;
+            width: 15%;
+            height: 70px;
+            background-color: rgb(180, 180, 180);
+            border: none;
+            transition: transform .5s ease;
+            font-size: 20px;
+         }
+      }
+
+      article {
+         height: 70vh;
+         margin: 20px;
+         background-color: rgba(107, 107, 107, 0.363);
+         display: flex;
+         justify-content: center;
+         
+         h3{
+            position: absolute;
+            bottom: -139px;
+         }
+         .agregarProductos-section {
+            width: 70vw;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 25px;
+
+            input {
+               padding: 10px;
+               width: 400px;
+               height: 45px;
+               border: none;
+               box-sizing: border-box;
+               font-size: 20px;
+               transition: all .2s ease;
+
+               &[type='submit'] {
+                  font-size: 20px;
+                  padding: 0;
+               }
+               &:focus {
+                  outline: none;
+                  border-left: 3px solid #00f;
+                  border-right: 3px solid #00f;
+                  padding: 12px;
+
+               }
+            }
+         }
+      }
+   }
+}
