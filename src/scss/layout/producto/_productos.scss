@@ -1,10 +1,12 @@
 // pagina de productos 
 // secciond principal
 .product-container {
-   height:80vh;
-   margin: 50px 0 0 10px;
+   height:88vh;
+   padding: 20px 0 50px 30px;
    display:flex;
    flex-direction:column;
+   background-color: #253342;
+   color: #fff;
    p {
       font-size:20px;
       letter-spacing: 3px;
@@ -51,7 +53,7 @@
          .product__img-info-cartButton {
             border: none;
             margin: 0 0 15px 0;
-            background-color: $colorPrimero;
+            background-color: #2D3F4B;
             color: #fff;
             border-radius: 20px;
             height: 60px;
@@ -78,7 +80,7 @@
                margin:5px 30px 0 30px;
                width: 100%;
                height: 100%;
-               background-color: $colorPrimero;
+               background-color: #2D3F4B;
                border-radius: 5px;
                color: white;
                padding: 16px;
@@ -99,6 +101,7 @@
             .dropdown-content {
                margin:0 30px;
                font-size:15px;
+               color: #000;
                padding:15px;
                display: none;
                position: absolute;

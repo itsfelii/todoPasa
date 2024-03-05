@@ -2,27 +2,13 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Buzos() {
-   //lazy load
-   useEffect (() => {
-      const aparecerElemento = (elementoId) => {
-         let el = document.getElementById(elementoId);
-         el.style.opacity = '1';
-         el.style.transition = 'opacity .8s ease';
-      }
-      setTimeout(() => aparecerElemento('firstItem') , 600)
-      setTimeout(() => aparecerElemento('secondItem') , 700)
-      setTimeout(() => aparecerElemento('thirdItem') , 800)
-      setTimeout(() => aparecerElemento('fourthItem') , 900)
-      setTimeout(() => aparecerElemento('fifthItem') , 1100)
-      setTimeout(() => aparecerElemento('sixthItem') , 1200)
-      setTimeout(() => aparecerElemento('seventhItem') , 1300)
-      setTimeout(() => aparecerElemento('eighthItem') , 1400) 
-   } , [])
    return (
       <>
          <section className="flex-product-section">
             <div className="flex-product-title">
-               <h3 className="flex-product-ruta">Home / Buzos</h3>
+               <h3 className="flex-product-ruta" style={{'letterSpacing' : '2px'}}>
+                  <Link to='/' style={{'font-size' : '.7rem'}}>Home</Link> &gt; Buzos
+               </h3>
                <h2 className="flex-product-type-title">Buzos</h2>
             </div>
             <div className="flex-product-container">

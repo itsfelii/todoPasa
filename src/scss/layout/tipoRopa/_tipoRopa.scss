@@ -2,7 +2,9 @@
    display: flex;
    padding: 50px 100px;
    flex-direction: column;
-   height: 130vh;
+   height: 150vh;
+   background-color: #253342;
+   color: #fff;
    .flex-product-title {
       display: flex;
       justify-content: space-between;
@@ -24,8 +26,7 @@
       row-gap: 100px;
       .flex-product__item {
          width: 300px;
-         background-color: #f3e2e8;
-         opacity: 0;
+         background-color: #C3D6D3;
          .flex-product__item-img {
             height: 100%;
             width: 100%;

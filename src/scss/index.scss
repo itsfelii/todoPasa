@@ -7,3 +7,9 @@
 @import "./layout/sesion/sesion";
 @import "./layout/stockManager/stockManager";
 @import "./media/mobile";
+
+body {
+   background-color: #ffffff;
+   overflow-x: hidden;
+   max-width:100vw;
+}

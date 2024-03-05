@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContextSesion = React.createContext();
+const UsuarioConectado = React.createContext();
  
  
-export default ContextSesion;
+export default UsuarioConectado;

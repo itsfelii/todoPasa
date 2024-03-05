@@ -2,27 +2,13 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function Vestidos() {
-   //lazy load
-   useEffect (() => {
-      const aparecerElemento = (elementoId) => {
-         let el = document.getElementById(elementoId);
-         el.style.opacity = '1';
-         el.style.transition = 'opacity .8s ease';
-      }
-      setTimeout(() => aparecerElemento('firstItem') , 600)
-      setTimeout(() => aparecerElemento('secondItem') , 650)
-      setTimeout(() => aparecerElemento('thirdItem') , 750)
-      setTimeout(() => aparecerElemento('fourthItem') , 800)
-      setTimeout(() => aparecerElemento('fifthItem') , 1000)
-      setTimeout(() => aparecerElemento('sixthItem') , 1100)
-      setTimeout(() => aparecerElemento('seventhItem') , 1150)
-      setTimeout(() => aparecerElemento('eighthItem') , 1200) 
-   })
    return (
       <>
          <section className="flex-product-section">
             <div className="flex-product-title">
-               <h3 className="flex-product-ruta">Home / Vestidos</h3>
+               <h3 className="flex-product-ruta" style={{ 'letterSpacing': '2px' }}>
+                  <Link to='/' style={{ 'font-size': '.7rem' }}>Home</Link> &gt; Vestidos
+               </h3>
                <h2 className="flex-product-type-title">Vestidos</h2>
             </div>
             <div className="flex-product-container">

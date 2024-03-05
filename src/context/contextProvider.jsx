@@ -1,11 +1,21 @@
-import React from 'react';
-import ContextSesion from './contextProduct';
+import React, { useContext } from 'react';
+import UsuarioConectado from './contextProduct';
+import { useState } from 'react';
 
-
-export default function ContextProvider({children}) {
+export function ContextProvider({ children }) {
+   let usuario = {
+      "nombre": "",
+      "email": ""
+   }
+   const [user, setUser] = useState(usuario);
+   const updateUser = (data) => {
+      setUser(data)
+   }
    return (
-      <ContextSesion.Provider>
+      <UsuarioConectado.Provider value={{ user, updateUser }}>
          {children}
-      </ContextSesion.Provider>
+      </UsuarioConectado.Provider>
    )
 }
+
+export const useUser = () => useContext(UsuarioConectado);

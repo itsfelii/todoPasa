@@ -1,4 +1,4 @@
-@media only screen and (max-width:760px) and (min-width:320px){
+@media only screen and (max-width:540px) and (min-width:320px){
    body {
       width: 100vw;
       overflow-x:hidden ;
@@ -150,6 +150,50 @@
          }
          .carrito__productos-info-comprar {
             padding: 10px;
+         }
+      }
+   }
+   // ajuste para la parte de sesion
+   html {
+      font-size: 10px;
+   }
+   .section-form {
+      padding:0;
+      .container-form {
+         margin: 0;
+         padding: 0;
+         width: 100vw;
+         .information {
+            flex-direction: column;
+            padding: 40px; 
+            .info-childs {
+               margin: 0;
+               width: 100%;
+               padding: 30px 20px;
+               border-radius: 20px 20px 0 0 !important;
+               h2 {
+                  font-size: 2.8rem;
+               }
+               p {
+                  font-size: 2rem;
+               }
+            }
+            .form-information {
+               padding: 5px 0;
+               height: auto;
+               margin: 0;
+               width: 100%;
+               border-radius: 0 0 20px 20px !important;
+
+               .form-information-childs {
+                  .form {
+                     padding: 10px 0; 
+                     input[type='submit'] {
+                        margin:0;
+                     }
+                  }
+               }
+            }
          }
       }
    }
