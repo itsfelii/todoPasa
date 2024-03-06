@@ -30,6 +30,14 @@ function App() {
   useEffect(() => {
     setNombre(USUARIO.user.nombre);
   }, [USUARIO.user]);
+
+  // sesion control
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth'
+    });
+  }
   return (
     <>
       <BrowserRouter>
@@ -41,7 +49,7 @@ function App() {
               </div>
               <div className="nav-section-1-2">
                 <div className="nav__search-container" >
-                  <input type="text" className="nav__search-input" placeholder="Busca productos"/>
+                  <input type="text" className="nav__search-input" placeholder="Busca productos" />
                   <i className="fa-solid fa-magnifying-glass fa-flip-horizontal fa-2xs"></i>
                 </div>
                 <Dropdown placement="bottom-end">
@@ -69,11 +77,12 @@ function App() {
                       Configurations
                     </DropdownItem>
                     <DropdownItem key="help_and_feedback">
-                    <i class="fa-solid fa-circle-info" style={{ 'margin-right': '10px' }}></i>
+                      <i class="fa-solid fa-circle-info" style={{ 'margin-right': '10px' }}></i>
                       Help & Feedback
                     </DropdownItem>
                     {nombre != '' && (
                       <DropdownItem key="logout" color="danger" onClick={() => {
+                        scrollToTop();
                         setOp(!op);
                         USUARIO.updateUser({
                           "nombre": "",
@@ -86,7 +95,10 @@ function App() {
                     }
                     {
                       nombre == '' && (
-                        <DropdownItem key="logout" color="primary" onClick={() => setOp(!op)}>
+                        <DropdownItem key="logout" color="primary" onClick={() => {
+                          scrollToTop();
+                          setOp(!op);
+                        }}>
                           Sign in
                         </DropdownItem>
                       )
@@ -100,9 +112,9 @@ function App() {
                   'height': '17px',
                   'margin': '10px 0 0 37px',
                 }} >
-                  <Link to='/ShoppingCart' >
-                    <div className="nav__shopping-cart">
-                      <i className="fa-solid fa-bag-shopping" id="shopping-cart"></i>
+                  <Link to='/ShoppingCart'>
+                    <div className="nav__shopping-cart" >
+                      <i className="fa-solid fa-bag-shopping" id="shopping-cart" ></i>
                     </div>
                   </Link>
                 </Badge>

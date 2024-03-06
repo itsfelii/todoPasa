@@ -27,11 +27,6 @@ export function GranCarouselImg1() {
                   alt="otra imagen del producto" id="gran-carousel-img-2" />
             )
          }
-         {
-            url == null ? (
-               <p style={{'font-size' : '15px'}}>loading...</p>
-            ) : ''
-         }
       </>
    );
 }
@@ -60,7 +55,7 @@ export function GridDisplay({index}) {
          }
          {
             url == null ? (
-               <p style={{'font-size' : '15px'}}>loading...</p>
+               <p style={{'font-size' : '15px'}}>...</p>
             ) : ''
          }
       </>
