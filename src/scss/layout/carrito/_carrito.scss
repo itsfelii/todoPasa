@@ -1,6 +1,6 @@
 // estilos de la parte de carrito
 .carrito-main-section {
-   background-color: #253342;
+   background-color: $color1;
    padding: 30px 100px;
    display: flex;
    justify-content: start;
@@ -15,7 +15,7 @@
       width: 70%;
 
       .carrito__producto {
-         background-color: #ffffff;
+         background-color: #fff;
          display: flex;
          margin-bottom: 10px;
          padding: 15px 15px 0 15px;
@@ -109,7 +109,7 @@
 
    .carrito__productos-info {
       display: flex;
-      background-color: #ffffff;
+      background-color: #fff;
       padding: 15px 24px;
       margin: 20px;
       width: 40%;
@@ -117,9 +117,9 @@
       align-items: center;
       border-radius: 10px;
       position: sticky;
-      top: 80px;
+      top: 90px;
       height: 190px;
-      box-shadow: 3px 2px 4px rgba(143, 143, 143, 0.685);
+      box-shadow: 2px 2px 4px rgba(143, 143, 143, 0.685);
 
       .carrito__productos-info-productos {
          display: flex;

@@ -1,5 +1,11 @@
 
 export default function ShoppingCart() {
+   const deleteProduct = (e) => {
+      let key = e.target.getAttribute('data-key');
+      let closest = e.target.closest('.carrito__producto') 
+      closest.parentNode.removeChild(closest);
+      console.log(key);
+   }
    return (
       <section className="carrito-main-section">
          <div className="carrito__productos-container">
@@ -9,10 +15,10 @@ export default function ShoppingCart() {
                </div>
                <div className="carrito__producto-item-delete">
                   <div>
-                     <h3>nombre</h3>
+                     <h3>nombre 1</h3>
                      <h4>precio</h4>
                   </div>
-                  <h4 className="eliminarBtn">Eliminar</h4>
+                  <h4 className="eliminarBtn" onClick={deleteProduct} data-key={1}>Eliminar</h4>
                </div>
                <hr className="hr" />
                <div className="carrito__producto-envios-container">
@@ -26,10 +32,10 @@ export default function ShoppingCart() {
                </div>
                <div className="carrito__producto-item-delete">
                   <div>
-                     <h3>nombre</h3>
+                     <h3>nombre 2</h3>
                      <h4>precio</h4>
                   </div>
-                  <h4 className="eliminarBtn">Eliminar</h4>
+                  <h4 className="eliminarBtn" onClick={deleteProduct} data-key={2}>Eliminar</h4>
                </div>
                <hr className="hr" />
                <div className="carrito__producto-envios-container">
@@ -43,10 +49,10 @@ export default function ShoppingCart() {
                </div>
                <div className="carrito__producto-item-delete">
                   <div>
-                     <h3>nombre</h3>
+                     <h3>nombre 3</h3>
                      <h4>precio</h4>
                   </div>
-                  <h4 className="eliminarBtn">Eliminar</h4>
+                  <h4 className="eliminarBtn" onClick={deleteProduct} data-key={3}>Eliminar</h4>
                </div>
                <hr className="hr" />
                <div className="carrito__producto-envios-container">
