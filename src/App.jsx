@@ -20,7 +20,8 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } f
 import { Badge } from "@nextui-org/react";
 // context
 import { useUser } from "./context/contextProvider";
-
+// scroll function 
+import scrollToTop from "./services/Scroll";
 function App() {
   // sesion menu 
   const [op, setOp] = useState(false);
@@ -31,18 +32,39 @@ function App() {
     setNombre(USUARIO.user.nombre);
   }, [USUARIO.user]);
 
-  // sesion control
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      // behavior: 'smooth'
-    });
-  }
+  // esconde el nav si baja o si sube
+  useEffect(() => {
+    let prevScrollY = window.scrollY;
+    const navbar = document.getElementById('navbar');
+
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > prevScrollY) {
+        // Si el usuario se desplaza hacia abajo, ocultamos la barra de navegación
+        if (currentScrollY >= 400) navbar.classList.add('nav-scrolled');
+      }
+      else navbar.classList.remove('nav-scrolled');
+      // Si el usuario se desplaza hacia arriba, mostramos la barra de navegación
+
+      // Actualizamos el valor previo para la próxima iteración
+      prevScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, []);
   return (
     <>
       <BrowserRouter>
         <header className="App-header">
-          <nav className="nav">
+          <nav className="nav" id='navbar'>
+            <div className="nav-section-offer">
+              <p>40-60% OFF FRESH PICKS + EXTRA 40% OFF SALE</p>
+            </div>
             <div className="nav-section-1">
               <div className="nav-section-1-1">
                 <Link to="/"><div className="nav__logo">Todo Pasa</div></Link>
@@ -74,11 +96,11 @@ function App() {
                     </DropdownItem>
                     <DropdownItem key="configurations">
                       <i class="fa-solid fa-gear" style={{ 'margin-right': '9px' }} />
-                      Configurations
+                      Configuraciones
                     </DropdownItem>
                     <DropdownItem key="help_and_feedback">
                       <i class="fa-solid fa-circle-info" style={{ 'margin-right': '10px' }}></i>
-                      Help & Feedback
+                      Ayuda
                     </DropdownItem>
                     {nombre != '' && (
                       <DropdownItem key="logout" color="danger" onClick={() => {
@@ -89,7 +111,7 @@ function App() {
                           "email": ""
                         })
                       }}>
-                        Log Out
+                        Cerrar Sesion
                       </DropdownItem>
                     )
                     }
@@ -99,7 +121,7 @@ function App() {
                           scrollToTop();
                           setOp(!op);
                         }}>
-                          Sign in
+                          Iniciar Sesion
                         </DropdownItem>
                       )
                     }
@@ -132,6 +154,7 @@ function App() {
               <Link to="/Sacos">Sacos</Link>
             </div>
           </div>
+
         </header>
         {
           op && (<Sesion
@@ -152,7 +175,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
         </Routes>
 
-        <div class="wave-container"></div>
         <Footer />
       </BrowserRouter>
     </>

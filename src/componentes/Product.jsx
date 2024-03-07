@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-
+import scrollToTop from '../services/Scroll';
 export default function Product() {
-   
+   scrollToTop();
    return (
       <>
          <section className="product-container">
@@ -30,30 +30,30 @@ export default function Product() {
                      <div className="dropdown-content">
                         Hacemos entrega por toda la provincia pero no llegamos mas que a eso. Las devoluciones seran tomadas si tiene alguna falla o decide cambiarlo en un plazo de 30 dias.
                      </div>
-                   </div>
+                  </div>
                </div>
             </div>
          </section>
          <section id="grid-display-container-2">
             <h2>Relacionado</h2>
-               <div className="grid-container">  
-                  <Link className="grid__item-1 grid__item"to='/Product'>
-                     <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-1-img" />
-                     <h3 className="grid__item-1-titulo">Remera</h3>
-                  </Link>
-                  <Link className="grid__item-2 grid__item"to='/Product'>
-                     <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-2-img" />
-                     <h3 className="grid__item-2-titulo">Pantalon</h3>
-                  </Link>
-                  <Link className="grid__item-3 grid__item" to='/Product'>
-                     <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-3-img" />
-                     <h3 className="grid__item-3-titulo">Saco</h3>
-                  </Link>
-                  <Link className="grid__item-4 grid__item" to='/Product'>
-                     <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-4-img" />
-                     <h3 className="grid__item-4-titulo">Jeans</h3>
-                  </Link>
-               </div>
+            <div className="grid-container">
+               <Link className="grid__item-1 grid__item" to='/Product'>
+                  <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-1-img" />
+                  <h3 className="grid__item-1-titulo">Remera</h3>
+               </Link>
+               <Link className="grid__item-2 grid__item" to='/Product'>
+                  <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-2-img" />
+                  <h3 className="grid__item-2-titulo">Pantalon</h3>
+               </Link>
+               <Link className="grid__item-3 grid__item" to='/Product'>
+                  <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-3-img" />
+                  <h3 className="grid__item-3-titulo">Saco</h3>
+               </Link>
+               <Link className="grid__item-4 grid__item" to='/Product'>
+                  <img src={require('../assets/img/jeans.jpg')} alt="imagen de un producto" class="grid__item-4-img" />
+                  <h3 className="grid__item-4-titulo">Jeans</h3>
+               </Link>
+            </div>
          </section>
       </>
    )
