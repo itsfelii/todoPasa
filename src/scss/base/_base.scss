@@ -420,3 +420,50 @@ footer {
       }
    }
 }
+@keyframes appearence {
+   to {
+      right: 0;
+   }
+}
+.floating-container {
+   position: fixed;
+   right: -2000px;
+   top: 50vh;
+   transform: translateY(-50%);
+   transition: all .5s ease;
+   z-index: 1000;
+
+   button {
+      left: 3px;
+      font-size: 28px;
+      position: absolute;
+   }
+}
+
+.floating-component {
+   background-color: $color1;
+   padding: 20px;
+   width: 30vw;
+   height: 100vh;
+   box-shadow: -7px 0 10px rgba(0, 0, 0, 0.425);
+
+   div {
+      color: $color4;
+      border-radius: 20px;
+      border: 2px solid $color4;
+      p {
+         color : $color4;
+      }
+   }
+
+   // &::before {
+   //    content : "" ;
+   //    background-color: #00000091;
+   //    width: 70vw;
+   //    height: 100vh;
+   //    position: absolute;
+   //    top: 0;
+   //    left: -70vw;
+   //    box-shadow: -50px 0 20px #00000091 ;
+   // }
+}

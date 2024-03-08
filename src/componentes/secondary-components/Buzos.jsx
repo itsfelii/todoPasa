@@ -6,17 +6,22 @@ export default function Buzos() {
       <>
          <section className="flex-product-section">
             <div className="flex-product-title">
-               <h3 className="flex-product-ruta" style={{ 'letterSpacing': '2px' }}>
-                  <Link to='/' style={{ 'font-size': '.7rem' }}>Home</Link> &gt; Buzos
-               </h3>
-               <h2 className="flex-product-type-title">Buzos</h2>
+               <div>
+                  <h3 className="flex-product-ruta" style={{ 'letterSpacing': '2px' }}>
+                     <Link to='/' style={{ 'font-size': '.7rem' }}>Home</Link> &gt; Buzos
+                  </h3>
+               </div>
+              <div>
+               
+                <h2 className="flex-product-type-title">Buzos</h2>
+              </div>
             </div>
             <article>
                <div className="flex-products-filters">
                   <h2>Filtros</h2>
                   <hr />
-                  <Accordion selectionMode="multiple" isCompact variant="splitted">
-                     <AccordionItem key="1" aria-label="Accordion 1" title="Descuentos" style={{'font-size' : '20px'}}>
+                  <Accordion selectionMode="multiple" isCompact>
+                     <AccordionItem key="1" aria-label="Accordion 1" title="Descuentos" style={{ 'background': '#f5f5f5', 'box-shadow': 'none' }}>
                         <ul>
                            <li>
                               <label>
@@ -27,24 +32,24 @@ export default function Buzos() {
                            <li>
                               <label>
                                  <input type="submit" value=' ' />
-                                 <p>40% OFF</p>
+                                 <p>30% OFF</p>
                               </label>
                            </li>
                            <li>
                               <label>
                                  <input type="submit" value=' ' />
-                                 <p>40% OFF</p>
+                                 <p>20% OFF</p>
                               </label>
                            </li>
                            <li>
                               <label>
                                  <input type="submit" value=' ' />
-                                 <p>40% OFF</p>
+                                 <p>10% OFF</p>
                               </label>
                            </li>
                         </ul>
                      </AccordionItem>
-                     <AccordionItem key="2" aria-label="Accordion 2" title="Precio">
+                     <AccordionItem key="2" aria-label="Accordion 2" title="Precio" style={{ 'background': '#f5f5f5', 'box-shadow': 'none' }}>
                         <ul>
                            <li>
                               <label>
@@ -72,7 +77,7 @@ export default function Buzos() {
                            </li>
                         </ul>
                      </AccordionItem>
-                     <AccordionItem key="3" aria-label="Accordion 3" title="Precio">
+                     <AccordionItem key="3" aria-label="Accordion 3" title="Precio" style={{ 'background': '#f5f5f5', 'box-shadow': 'none' }}>
                         <ul>
                            <li>
                               <label>

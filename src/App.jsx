@@ -14,7 +14,7 @@ import Sesion from "./componentes/Sesion";
 import StockManager from "./componentes/StockManager";
 // hookers
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 // Next ui
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } from "@nextui-org/react";
 import { Badge } from "@nextui-org/react";
@@ -23,6 +23,14 @@ import { useUser } from "./context/contextProvider";
 // scroll function 
 import scrollToTop from "./services/Scroll";
 function App() {
+  const toggleOpen = useCallback(() => {
+    let caja = document.getElementById('cart-floating-component');
+    caja.style.right = '0';
+  }, []);
+  const closeComponent = useCallback(() => {
+    let caja = document.getElementById('cart-floating-component');
+    caja.style.right = '-2000px'
+  }, []);
   // sesion menu 
   const [op, setOp] = useState(false);
   // nombre de usuario
@@ -57,6 +65,31 @@ function App() {
       window.removeEventListener('scroll', controlNavbar);
     };
   }, []);
+
+  const products = [
+    {
+      id: 1,
+      name: 'Throwback Hip Bag',
+      href: '#',
+      color: 'Salmon',
+      price: '$90.00',
+      quantity: 1,
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+      imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+    },
+    {
+      id: 2,
+      name: 'Medium Stuff Satchel',
+      href: '#',
+      color: 'Blue',
+      price: '$32.00',
+      quantity: 1,
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+      imageAlt:
+        'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+    },
+    // More products...
+  ]
   return (
     <>
       <BrowserRouter>
@@ -134,12 +167,27 @@ function App() {
                   'height': '17px',
                   'margin': '10px 0 0 37px',
                 }} >
-                  <Link to='/ShoppingCart'>
+                  <Link onClick={toggleOpen}>
                     <div className="nav__shopping-cart" >
                       <i className="fa-solid fa-bag-shopping" id="shopping-cart" ></i>
                     </div>
                   </Link>
                 </Badge>
+
+                <div className="floating-container" id='cart-floating-component'>
+                  <button onClick={closeComponent}>
+                    <i class='bx bxs-x-circle'></i>
+                  </button>
+                  <div className="floating-component">
+                    <div>
+                      <Link to='/ShoppingCart' onClick={closeComponent}>
+                        <p>Continuar compra</p>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+
               </div>
             </div>
           </nav>
