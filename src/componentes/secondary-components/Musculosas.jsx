@@ -1,90 +1,200 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 
 export default function Musculosas() {
+   const hideFilters = () => {
+      let filter = document.querySelector('.flex-products-filters');
+      console.log(filter.style.width);
+      if (filter.style.width == '20vw') {
+         filter.style.width = '0';
+         filter.style.opacity = '0';
+      } else {
+         filter.style.width = '20vw';
+         filter.style.opacity = '1';
+      }
+   }
    return (
       <>
          <section className="flex-product-section">
             <div className="flex-product-title">
-               <h3 className="flex-product-ruta" style={{ 'letterSpacing': '2px' }}>
-                  <Link to='/' style={{ 'font-size': '.7rem' }}>Home</Link> &gt; Musculosas
-               </h3>
-               <h2 className="flex-product-type-title">Musculosas</h2>
-            </div>
-            <div className="flex-product-container">
-               <div className="flex-product__item" id='firstItem'>
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
+               <div>
+                  <h3 className="flex-product-ruta" style={{ 'letterSpacing': '2px' }}>
+                     <Link to='/' style={{ 'font-size': '.7rem' }}>Home</Link> &gt; Musculosas
+                  </h3>
                </div>
-               <div className="flex-product__item" id="secondItem">
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
-               </div>
-               <div className="flex-product__item" id='thirdItem'>
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
-               </div>
-               <div className="flex-product__item" id='fourthItem'>
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
-               </div>
-               <div className="flex-product__item" id='fifthItem'>
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
-               </div>
-               <div className="flex-product__item" id='sixthItem'>
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
-               </div>
-               <div className="flex-product__item" id='seventhItem'>
-                  <Link to="Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
-               </div>
-               <div className="flex-product__item" id='eighthItem'>
-                  <Link to="/Product">
-                     <img src="" alt="imagen de producto" className="flex-product__item-img" />
-                  </Link>
-                  <div>
-                     <h4 className="flex-product__item-title">jeans</h4>
-                     <h4 className="flex-product__item-precio">$00000</h4>
-                  </div>
+               <div>
+                  <p onClick={hideFilters}>Esconder Filtros <i class='bx bx-filter' /></p>
+                  <h2 className="flex-product-type-title">Musculosas</h2>
                </div>
             </div>
+            <article>
+               <div className="flex-products-filters">
+                  <h2>Filtros</h2>
+                  <hr />
+                  <Accordion selectionMode="multiple" isCompact>
+                     <AccordionItem key="1" aria-label="Accordion 1" title="Descuentos" style={{ 'background': '#f5f5f5', 'box-shadow': 'none' }}>
+                        <ul>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>40% OFF</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>30% OFF</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>20% OFF</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>10% OFF</p>
+                              </label>
+                           </li>
+                        </ul>
+                     </AccordionItem>
+                     <AccordionItem key="2" aria-label="Accordion 2" title="Precio" style={{ 'background': '#f5f5f5', 'box-shadow': 'none' }}>
+                        <ul>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$10,000 - $15,000</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$15,000 - $20,000</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$20,000 - $25,000</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$30,000 +</p>
+                              </label>
+                           </li>
+                        </ul>
+                     </AccordionItem>
+                     <AccordionItem key="3" aria-label="Accordion 3" title="Precio" style={{ 'background': '#f5f5f5', 'box-shadow': 'none' }}>
+                        <ul>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$10,000 - $15,000</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$15,000 - $20,000</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$20,000 - $25,000</p>
+                              </label>
+                           </li>
+                           <li>
+                              <label>
+                                 <input type="submit" value=' ' />
+                                 <p>$30,000 +</p>
+                              </label>
+                           </li>
+                        </ul>
+                     </AccordionItem>
+                  </Accordion>
+               </div>
+               <div className="flex-product-container">
+                  <div className="flex-product__item" id='firstItem'>
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id="secondItem">
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id='thirdItem'>
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id='fourthItem'>
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id='fifthItem'>
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id='sixthItem'>
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id='seventhItem'>
+                     <Link to="Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+                  <div className="flex-product__item" id='eighthItem'>
+                     <Link to="/Product">
+                        <img src="" alt="imagen de producto" className="flex-product__item-img" />
+                     </Link>
+                     <div>
+                        <h4 className="flex-product__item-title">jeans</h4>
+                        <h4 className="flex-product__item-precio">$00000</h4>
+                     </div>
+                  </div>
+               </div>
+            </article>
+
          </section>
       </>
    )

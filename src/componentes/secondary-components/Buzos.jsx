@@ -2,6 +2,18 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 export default function Buzos() {
+   const hideFilters = () => {
+      let filter = document.querySelector('.flex-products-filters');
+      console.log(filter.style.width);
+      if (filter.style.width == '20vw') {
+         filter.style.width = '0';
+         filter.style.opacity = '0';
+      } else {
+         filter.style.width = '20vw';
+         filter.style.opacity = '1';
+      }
+   }
+
    return (
       <>
          <section className="flex-product-section">
@@ -11,10 +23,10 @@ export default function Buzos() {
                      <Link to='/' style={{ 'font-size': '.7rem' }}>Home</Link> &gt; Buzos
                   </h3>
                </div>
-              <div>
-               
-                <h2 className="flex-product-type-title">Buzos</h2>
-              </div>
+               <div>
+                  <p onClick={hideFilters}>Esconder Filtros <i class='bx bx-filter' /></p>
+                  <h2 className="flex-product-type-title">Buzos</h2>
+               </div>
             </div>
             <article>
                <div className="flex-products-filters">
@@ -106,12 +118,6 @@ export default function Buzos() {
                         </ul>
                      </AccordionItem>
                   </Accordion>
-
-
-
-
-
-
                </div>
                <div className="flex-product-container">
                   <div className="flex-product__item" id='firstItem'>
@@ -188,7 +194,6 @@ export default function Buzos() {
                   </div>
                </div>
             </article>
-
          </section>
       </>
    )

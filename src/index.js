@@ -5,13 +5,16 @@ import App from './App';
 import { NextUIProvider } from "@nextui-org/react";
 import "./index.css";
 import { ContextProvider } from "./context/contextProvider";
+import { ContextProductProvider } from './context/contextoProvider2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NextUIProvider>
       <ContextProvider>
-        <App />
+        <ContextProductProvider>
+          <App />
+        </ContextProductProvider>
       </ContextProvider>
     </NextUIProvider>
   </React.StrictMode>

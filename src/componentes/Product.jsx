@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import scrollToTop from '../services/Scroll';
+import { useProduct } from '../context/contextoProvider2';
+import { Suspense, useState } from 'react';
+import { Accordion, AccordionItem } from '@nextui-org/react';
 export default function Product() {
    scrollToTop();
+   const [url, setUrl] = useState(null);
+   const producto = useProduct();
+
    return (
       <>
          <section className="product-container">
@@ -9,10 +15,14 @@ export default function Product() {
             <div>
                <div className="product__img-container">
                   <div className="product__img-1">
-                     <img src="" alt="imagen de un producto" id="imgProducto1" />
+                     <Suspense>
+                        <img src={producto.product.url} alt="imagen de un producto" id="imgProducto1" />
+                     </Suspense>
                   </div>
                   <div className="product__img-2">
-                     <img src="" alt="otra imagen del producto" id="imgProducto2" />
+                     <Suspense>
+                        <img src={producto.product.url} alt="otra imagen del producto" id="imgProducto2" />
+                     </Suspense>
                   </div>
                </div>
                <div className="product__img-info">
@@ -25,12 +35,11 @@ export default function Product() {
                   </div>
                   <button className="product__img-info-cartButton">Agregar al carrito</button>
                   <hr />
-                  <div className="product__img-info-dropdown">
-                     <button className="dropbtn">Entregas y Devoluciones</button>
-                     <div className="dropdown-content">
-                        Hacemos entrega por toda la provincia pero no llegamos mas que a eso. Las devoluciones seran tomadas si tiene alguna falla o decide cambiarlo en un plazo de 30 dias.
-                     </div>
-                  </div>
+                  <Accordion isCompact>
+                     <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
+                        <p>hacemos envios a todo el pais</p>
+                     </AccordionItem>
+                  </Accordion>
                </div>
             </div>
          </section>

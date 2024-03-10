@@ -144,13 +144,14 @@ header {
             align-items: center;
 
             .nav__search-container {
+               position: relative;
                margin-right: 15px;
                width: 30vw;
                height: 32px;
                display: flex;
                padding: 10px;
                align-items: center;
-               background-color: #F5F5F5;
+               background-color: #ECEFF1;
                border-radius: 13px;
                justify-content: space-between;
                color: #000;
@@ -162,9 +163,10 @@ header {
                   outline: none;
                   font-size: 15px;
                   padding: 0 3px;
-                  background-color: #F5F5F5;
+                  background-color: inherit;
                   border-right: 2px solid #000000a8;
                   margin-right: 10px;
+
                }
 
                i {
@@ -173,6 +175,15 @@ header {
                   &:hover {
                      cursor: pointer;
                   }
+               }
+               .nav__search-results {
+                  position: absolute;
+                  right: 0;
+                  top: -500px;
+                  border-radius: 10px;
+                  background-color: $color1;
+                  width: 40vw;
+                  height: 40vh;
                }
             }
 
@@ -420,11 +431,13 @@ footer {
       }
    }
 }
+
 @keyframes appearence {
    to {
       right: 0;
    }
 }
+
 .floating-container {
    position: fixed;
    right: -2000px;
@@ -446,13 +459,88 @@ footer {
    width: 30vw;
    height: 100vh;
    box-shadow: -7px 0 10px rgba(0, 0, 0, 0.425);
+   padding: 0 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 
-   div {
-      color: $color4;
-      border-radius: 20px;
-      border: 2px solid $color4;
-      p {
-         color : $color4;
+   article {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 0;
+
+      div.floating-component__cart-product {
+         display: flex;
+         justify-content: space-between;
+
+         div.floating-component__cart-product-img-container {
+            display: flex;
+            gap: 5px;
+
+            img {
+               width: 70px;
+               height: 70px;
+               object-fit: cover;
+               border-radius: 10px;
+            }
+
+            div {
+               display: flex;
+               flex-direction: column;
+
+               h3 {
+                  font-size: 23px;
+               }
+
+               p {
+                  font-size: 18px;
+               }
+            }
+         }
+
+         div.floating-component__cart-product-price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            h3 {
+               font-size: 23px;
+            }
+            i {
+               cursor : pointer;
+            }
+         }
+      }
+      hr {
+         margin-top: 5px;
+         height: 2px;
+      }
+   }
+
+   .floating-component__buy-btn {
+      height: 90px;
+
+      a {
+         p {
+            padding: 5px;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 24px;
+            transition: background-color .3s ease;
+            background-color: #000;
+            color: #fff;
+
+            &:hover {
+               background-color: #494949;
+            }
+         }
+      }
+
+      button {
+         margin: 5px 9.5vw 0;
+         text-wrap: nowrap;
+         color: #2b2b2bab;
+         font-size: 20px;
       }
    }
 

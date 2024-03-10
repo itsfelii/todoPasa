@@ -15,12 +15,22 @@
          font-size: 20px;
          margin: 0 40px;
       }
-
-      .flex-product-type-title {
-         font-size: 60px;
-         margin: 10px 40px;
-         font-weight: 700;
-         letter-spacing: 3px;
+      div{ 
+         display: flex;
+         align-items: center;
+         p {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: .8rem;
+            cursor: pointer;
+         }
+         .flex-product-type-title {
+            font-size: 60px;
+            margin: 0 40px;
+            font-weight: 700;
+            letter-spacing: 3px;
+         }
       }
    }
 
@@ -30,6 +40,7 @@
 
       .flex-products-filters {
          width: 20vw;
+         transition: width .5s ease , opacity .2s ease;
          h2  {
             font-size: 30px;
             margin-bottom: 10px;
@@ -102,6 +113,7 @@
          grid-template-rows: repeat(3, 350px);
          column-gap: 20px;
          row-gap: 100px;
+         transition: width .5s ease;
 
          .flex-product__item {
             min-width: 300px;

@@ -66,30 +66,18 @@ function App() {
     };
   }, []);
 
-  const products = [
-    {
-      id: 1,
-      name: 'Throwback Hip Bag',
-      href: '#',
-      color: 'Salmon',
-      price: '$90.00',
-      quantity: 1,
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-      imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-    },
-    {
-      id: 2,
-      name: 'Medium Stuff Satchel',
-      href: '#',
-      color: 'Blue',
-      price: '$32.00',
-      quantity: 1,
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-      imageAlt:
-        'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-    },
-    // More products...
-  ]
+  // busqueda
+  const handleSearch = (e) => {
+    let results = document.getElementById('nav__search-results-js');
+    if (e.target.value == '') {
+      results.style.top = '-500px';
+    } else {
+      // se hace la busqueda aca 
+      results.style.top = '39px';
+    }
+  }
+
+
   return (
     <>
       <BrowserRouter>
@@ -104,8 +92,10 @@ function App() {
               </div>
               <div className="nav-section-1-2">
                 <div className="nav__search-container" >
-                  <input type="text" className="nav__search-input" placeholder="Busca productos" />
+                  <input type="text" className="nav__search-input" placeholder="Busca productos" onChange={handleSearch} />
                   <i className="fa-solid fa-magnifying-glass fa-flip-horizontal fa-2xs"></i>
+                  <div className="nav__search-results" id='nav__search-results-js'>
+                  </div>
                 </div>
                 <Dropdown placement="bottom-end">
                   <DropdownTrigger>
@@ -179,15 +169,33 @@ function App() {
                     <i class='bx bxs-x-circle'></i>
                   </button>
                   <div className="floating-component">
-                    <div>
+                    <article>
+                      <div className="floating-component__cart-product">
+                        <div className="floating-component__cart-product-img-container">
+                          <img src={require('./assets/img/jeans.jpg')} alt="" />
+                          <div>
+                            <h3>Nombre</h3>
+                            <p>Talle</p>
+                          </div>
+                        </div>
+                        <div className='floating-component__cart-product-price-container'>
+                          <h3>Precio</h3>
+                          <i class='bx bx-trash' onClick={(e) => {
+                            let closest = e.target.closest('.floating-component__cart-product');
+                            closest.parentNode.removeChild(closest);
+                          }} />
+                        </div>
+                      </div>
+                      <hr />
+                    </article>
+                    <div className="floating-component__buy-btn">
                       <Link to='/ShoppingCart' onClick={closeComponent}>
-                        <p>Continuar compra</p>
+                        <p>Iniciar compra</p>
                       </Link>
+                      <button onClick={closeComponent}>Continuar comprando</button>
                     </div>
                   </div>
                 </div>
-
-
               </div>
             </div>
           </nav>
@@ -202,7 +210,6 @@ function App() {
               <Link to="/Sacos">Sacos</Link>
             </div>
           </div>
-
         </header>
         {
           op && (<Sesion

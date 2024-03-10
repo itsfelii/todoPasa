@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import scrollToTop from "../services/Scroll";
 export default function () {
    return (
       <footer>
@@ -15,13 +15,13 @@ export default function () {
             <div className="footer__grid-item">
                <h3>PRODUCTOS</h3>
                <ul>
-                  <li>Jeans</li>
-                  <li>Remeras</li>
-                  <li>Musculosas</li>
-                  <li>Vestidos</li>
-                  <li>Mallas</li>
-                  <li>Buzos</li>
-                  <li>Sacos</li>
+                  <Link to='/Jeans' onClick={scrollToTop}><li>Jeans</li></Link>
+                  <Link to='/Remeras' onClick={scrollToTop}><li>Remeras</li></Link>
+                  <Link to='/Musculosas' onClick={scrollToTop}><li>Musculosas</li></Link>
+                  <Link to='/Vestidos' onClick={scrollToTop}><li>Vestidos</li></Link>
+                  <Link to='/Mallas' onClick={scrollToTop}><li>Mallas</li></Link>
+                  <Link to='/Buzos' onClick={scrollToTop}><li>Buzos</li></Link>
+                  <Link to='/Sacos' onClick={scrollToTop}><li>Sacos</li></Link>
                </ul>
             </div>
             <div className="footer__grid-item">

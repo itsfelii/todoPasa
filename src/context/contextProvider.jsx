@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UsuarioConectado from './contextProduct';
+import UsuarioConectado from './contextUser';
 import { useState } from 'react';
 
 export function ContextProvider({ children }) {

@@ -5,8 +5,8 @@
    padding: 20px 0 50px 30px;
    display:flex;
    flex-direction:column;
-   background-color: $color4;
-   color: #fff;
+   background-color: $color1;
+   color: #000;
    p {
       font-size:20px;
       letter-spacing: 3px;
@@ -70,53 +70,6 @@
                cursor: pointer;
             }
          }
-         .product__img-info-dropdown {
-            position: relative;
-            display: inline-block;
-            height: 60px;
-            width: 80%;
-            
-            &:hover .dropdown-content {
-               display: block;
-               opacity: 1;
-            }
-            .dropbtn {
-               margin:5px 30px 0 30px;
-               width: 100%;
-               height: 100%;
-               background-color: #2D3F4B;
-               border-radius: 5px;
-               color: white;
-               padding: 16px;
-               font-size: 16px;
-               border: none;
-               cursor: pointer;
-               z-index: 5;
-               transition:all .5s ease;
-               &:hover {
-                  transform:scale(1.1);
-                  margin-bottom:3px;
-               }
-               
-               &:hover, &:focus {
-                  background-color: #33434e;
-               }
-            }
-            .dropdown-content {
-               margin:0 30px;
-               font-size:15px;
-               color: #000;
-               padding:15px;
-               display: none;
-               position: absolute;
-               background-color: #f9f9f9;
-               width: 256px;
-               height:auto;
-               box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-               opacity: 0;
-               transition: opacity 0.5s ease;
-            }
-        }
       }
    }
 }

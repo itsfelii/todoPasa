@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { fetchProduct } from './services/Callproduct';
+import { Card, Skeleton } from "@nextui-org/react";
+import { useProduct } from './context/contextoProvider2';
+import { Link } from 'react-router-dom';
 
-export function GranCarouselImg1() {
-
+export function GranCarouselImg2({ index }) {
    const [url, setUrl] = useState(null);
 
    if (url == null) {
       async function getProducts() {
          let p = await axios.get("http://localhost:5000/api/products/ordenate")
-         if (p.data.remeras[1]) {
-            const PRODUCT_NAME = p.data.remeras[1].nombre
+         if (p.data.remeras[Number(index)]) {
+            var PRODUCT_NAME = p.data.remeras[Number(index)].nombre
             return PRODUCT_NAME;
          }
       }
@@ -18,6 +20,60 @@ export function GranCarouselImg1() {
          fetchProduct(res).then(response => setUrl(response))
       });
    }
+   const PRODUCTO = useProduct();
+   const changeProduct = () => {
+      PRODUCTO.updateProduct({
+         "nombre" : 'remera' ,
+         "precio" : '$30,000' ,
+         "url" : url
+      })
+   }
+   return (
+      <>
+         {
+            url && (
+               <>
+                  <div className="gran-carousel__item-1-info">
+                     <h3>Something</h3>
+                     <Link to="/Product" onClick={changeProduct}><div>Shop it</div></Link>
+                  </div>
+                  <img className="gran-carousel__item-1-img" src={url} alt="imagen de un producto" />
+               </>
+
+            )
+         }
+         {
+            !url && (
+               <>
+                  <Card className="space-y-5 rounded-lg" style={{ width: '100%', height: '90vh' }}>
+                     <Skeleton style={{ 'border-radius': 'none' }}>
+                        <div style={{ height: '90vh' }}></div>
+                     </Skeleton>
+                  </Card>
+               </>
+            )
+         }
+      </>
+   )
+}
+
+export function GranCarouselImg1({ index }) {
+
+   const [url, setUrl] = useState(null);
+
+   if (url == null) {
+      async function getProducts() {
+         let p = await axios.get("http://localhost:5000/api/products/ordenate")
+         if (p.data.remeras[Number(index)]) {
+            var PRODUCT_NAME = p.data.remeras[Number(index)].nombre
+            return PRODUCT_NAME;
+         }
+      }
+      getProducts().then(res => {
+         fetchProduct(res).then(response => setUrl(response))
+      });
+   }
+   // esto se va a ejecutar cuando el homepage actualice el producto para que le diga que este componente rellene los otros datos
 
    return (
       <>
@@ -27,11 +83,22 @@ export function GranCarouselImg1() {
                   alt="otra imagen del producto" id="gran-carousel-img-2" />
             )
          }
+         {
+            !url && (
+               <div>
+                  <Card className="space-y-5 rounded-lg" style={{ width: '100%', height: '90vh' }}>
+                     <Skeleton style={{ 'border-radius': 'none' }}>
+                        <div style={{ height: '90vh' }}></div>
+                     </Skeleton>
+                  </Card>
+               </div>
+            )
+         }
       </>
    );
 }
 
-export function GridDisplay({index}) {
+export function GridDisplay({ index }) {
    const [url, setUrl] = useState(null)
    if (url == null) {
       async function getProducts() {
@@ -45,17 +112,31 @@ export function GridDisplay({index}) {
          fetchProduct(res).then(response => setUrl(response))
       });
    }
-
+   const PRODUCTO = useProduct();
+   const changeProduct = () => {
+      PRODUCTO.updateProduct({
+         "nombre" : 'remera' ,
+         "precio" : '$30,000' ,
+         "url" : url
+      })
+   }
    return (
       <>
          {
             url && (
-               <img src={url} alt="imagen de un producto" />
+               <Link className="grid__item" to="/Product" onClick={changeProduct}>
+                  <img src={url} alt="imagen de un producto" />
+                  <h3>Remeras</h3>
+               </Link>
             )
          }
          {
             url == null ? (
-               <p style={{'font-size' : '15px'}}>...</p>
+               <Card className="space-y-5 rounded-lg" style={{ width: '270px', height: '100%' }}>
+                  <Skeleton style={{ 'border-radius': 'none' }}>
+                     <div style={{ height: '50vh' }}></div>
+                  </Skeleton>
+               </Card>
             ) : ''
          }
       </>
