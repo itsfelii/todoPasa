@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import scrollToTop from '../services/Scroll';
 import { useProduct } from '../context/contextoProvider2';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Accordion, AccordionItem } from '@nextui-org/react';
 export default function Product() {
    scrollToTop();

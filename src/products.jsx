@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { fetchProduct } from './services/Callproduct';
-import { Card, Skeleton } from "@nextui-org/react";
+import { Card, Skeleton, Image } from "@nextui-org/react";
 import { useProduct } from './context/contextoProvider2';
 import { Link } from 'react-router-dom';
 
@@ -23,9 +23,9 @@ export function GranCarouselImg2({ index }) {
    const PRODUCTO = useProduct();
    const changeProduct = () => {
       PRODUCTO.updateProduct({
-         "nombre" : 'remera' ,
-         "precio" : '$30,000' ,
-         "url" : url
+         "nombre": 'remera',
+         "precio": '$30,000',
+         "url": url
       })
    }
    return (
@@ -98,7 +98,7 @@ export function GranCarouselImg1({ index }) {
    );
 }
 
-export function GridDisplay({ index }) {
+export function GridDisplay({ index  , text }) {
    const [url, setUrl] = useState(null)
    if (url == null) {
       async function getProducts() {
@@ -115,9 +115,9 @@ export function GridDisplay({ index }) {
    const PRODUCTO = useProduct();
    const changeProduct = () => {
       PRODUCTO.updateProduct({
-         "nombre" : 'remera' ,
-         "precio" : '$30,000' ,
-         "url" : url
+         "nombre": 'remera',
+         "precio": '$30,000',
+         "url": url
       })
    }
    return (
@@ -126,13 +126,16 @@ export function GridDisplay({ index }) {
             url && (
                <Link className="grid__item" to="/Product" onClick={changeProduct}>
                   <img src={url} alt="imagen de un producto" />
-                  <h3>Remeras</h3>
+                  <div>
+                     <Link to="/Remeras"><div>Comprar</div></Link>
+                     <h3>{text}</h3>
+                  </div>
                </Link>
             )
          }
          {
             url == null ? (
-               <Card className="space-y-5 rounded-lg" style={{ width: '270px', height: '100%' }}>
+               <Card className="space-y-5 rounded-lg" style={{ width: '400px', height: '100%' }}>
                   <Skeleton style={{ 'border-radius': 'none' }}>
                      <div style={{ height: '50vh' }}></div>
                   </Skeleton>
