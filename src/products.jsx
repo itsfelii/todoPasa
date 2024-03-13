@@ -98,7 +98,7 @@ export function GranCarouselImg1({ index }) {
    );
 }
 
-export function GridDisplay({ index  , text }) {
+export function GridDisplay({ index, text , variant = 1}) {
    const [url, setUrl] = useState(null)
    if (url == null) {
       async function getProducts() {
@@ -124,18 +124,22 @@ export function GridDisplay({ index  , text }) {
       <>
          {
             url && (
-               <Link className="grid__item" to="/Product" onClick={changeProduct}>
-                  <img src={url} alt="imagen de un producto" />
-                  <div>
-                     <Link to="/Remeras"><div>Comprar</div></Link>
-                     <h3>{text}</h3>
-                  </div>
-               </Link>
+               <>
+                  <Link to='/Product' onClick={changeProduct}>
+                     <div className={variant == 2 ? 'carousel__card-img2' : 'carousel__card-img'}>
+                        <img src={url} alt="" draggable='false' />
+                     </div>
+                  </Link>
+                  <span>Lo nuevo</span>
+                  <h2>{text}</h2>
+                  <h3>$20,000</h3>
+               </>
+
             )
          }
          {
             url == null ? (
-               <Card className="space-y-5 rounded-lg" style={{ width: '400px', height: '100%' }}>
+               <Card className="space-y-5 rounded-lg" style={{ width: '280px', height: '280px' }}>
                   <Skeleton style={{ 'border-radius': 'none' }}>
                      <div style={{ height: '50vh' }}></div>
                   </Skeleton>
@@ -146,4 +150,46 @@ export function GridDisplay({ index  , text }) {
    )
 }
 
+export function VentoSection({ index }) {
+   const [url, setUrl] = useState(null);
 
+   if (url == null) {
+      async function getProducts() {
+         let p = await axios.get("http://localhost:5000/api/products/ordenate")
+         if (p.data.remeras[Number(index)]) {
+            var PRODUCT_NAME = p.data.remeras[Number(index)].nombre
+            return PRODUCT_NAME;
+         }
+      }
+      getProducts().then(res => {
+         fetchProduct(res).then(response => setUrl(response))
+      });
+   }
+   // esto se va a ejecutar cuando el homepage actualice el producto para que le diga que este componente rellene los otros datos
+
+   return (
+      <>
+         {
+            url && (
+               <>
+                  <img src={url} alt="" />
+                  <div className="vento-grid__item-information">
+                     <h3>Remeras</h3>
+                     <div>Comprar</div>
+                  </div>
+               </>
+
+            )
+         }
+         {
+            url == null ? (
+               <Card className="space-y-5 rounded-lg" style={{ width: '47.5vw', height: '100%' }}>
+                  <Skeleton style={{ 'border-radius': 'none' }}>
+                     <div style={{ height: '102vh' }}></div>
+                  </Skeleton>
+               </Card>
+            ) : ''
+         }
+      </>
+   )
+}

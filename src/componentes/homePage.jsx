@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 // import { useEffect, useRef, useState } from "react";
-import { GranCarouselImg1, GridDisplay, GranCarouselImg2 } from "../products";
+import { GranCarouselImg1, GridDisplay, GranCarouselImg2, VentoSection } from "../products";
 // scroll function 
 import scrollToTop from "../services/Scroll";
 // product context
@@ -16,12 +16,81 @@ export default function HomePage() {
       'url': ''
     })
   }
+  // animacion de carousel 
+  let isDragging = false, startX, startScrollLeft;
   useEffect(() => {
-    let carousel = document.querySelector('.grid-container');
-    const dragging = (e) => {
-      carousel.scrollLeft = e.pageX;
+    // funcionalidad de drag move carousel
+    let carousel = document.querySelector('.carousel-container');
+
+    const startDragging = (e) => {
+      isDragging = true;
+      carousel.classList.add('dragging');
+      startX = e.pageX;
+      startScrollLeft = carousel.scrollLeft;
     }
-    carousel.addEventListener('mousemove', dragging)
+
+    const dragStop = () => {
+      isDragging = false;
+      carousel.classList.remove('dragging')
+    }
+
+    const dragging = (e) => {
+      if (!isDragging) return;
+      carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+    }
+
+    carousel.addEventListener('mousedown', startDragging);
+    carousel.addEventListener('mousemove', dragging);
+    document.addEventListener('mouseup', dragStop);
+    carousel.addEventListener('mouseleave', dragStop);
+
+    // funcionalidad de la flechas
+
+    let arrowBtns = document.querySelectorAll('.carousel__wrapper i');
+    let firstCardWidth = document.querySelector('.carousel__card').offsetWidth;
+    arrowBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        console.log(btn.id);
+        carousel.scrollLeft += btn.id === 'left' ? -firstCardWidth : firstCardWidth;
+      })
+    })
+
+    // segundo carousel 
+
+     // funcionalidad de drag move carousel
+     let carousel2 = document.querySelector('.carousel-container2');
+
+     const startDragging2 = (e) => {
+       isDragging = true;
+       carousel2.classList.add('dragging');
+       startX = e.pageX;
+       startScrollLeft = carousel2.scrollLeft;
+     }
+ 
+     const dragStop2 = () => {
+       isDragging = false;
+       carousel2.classList.remove('dragging')
+     }
+ 
+     const dragging2 = (e) => {
+       if (!isDragging) return;
+       carousel2.scrollLeft = startScrollLeft - (e.pageX - startX);
+     }
+ 
+     carousel2.addEventListener('mousedown', startDragging2);
+     carousel2.addEventListener('mousemove', dragging2);
+     document.addEventListener('mouseup', dragStop2);
+     carousel2.addEventListener('mouseleave', dragStop2);
+ 
+     // funcionalidad de la flechas
+ 
+     let arrowBtns2 = document.querySelectorAll('.carousel__wrapper i');
+     let firstCardWidth2 = document.querySelector('.carousel__card').offsetWidth;
+     arrowBtns2.forEach(btn => {
+       btn.addEventListener('click', () => {
+         carousel2.scrollLeft += btn.id === 'left' ? -firstCardWidth2 : firstCardWidth2;
+       })
+     })
   })
   return (
     <main>
@@ -35,44 +104,82 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className='carousel-container'>
-        <i class="fa-solid fa-chevron-right left" />
-        <div id="grid-display-container">
-          <div className="grid-container">
-            <GridDisplay index={1} text='Remeras' />
-            <GridDisplay index={3} text='Accesorios' />
-            <GridDisplay index={2} text='Musculosas' />
-            <GridDisplay index={4} text='Jeans' />
-            <GridDisplay index={1} text='Jeans' />
-            <GridDisplay index={2} text='Jeans' />
-          </div>
+      <section className='carousel-section'>
+        <h2 className="carousel-section__title">Remeras</h2>
+        <div className="carousel__wrapper">
+          <i id='left' class="fa-solid fa-chevron-left" />
+          <ul className="carousel-container">
+            <li className="carousel__card">
+              <GridDisplay index={3} text={'Remera'} />
+            </li>
+            <li className="carousel__card">
+              <GridDisplay index={2} text={'Jeans'} />
+            </li>
+            <li className="carousel__card">
+              <GridDisplay index={1} text={'Camisa'} />
+            </li>
+            <li className="carousel__card">
+              <GridDisplay index={4} text={'Pantalon'} />
+            </li>
+            <li className="carousel__card">
+              <GridDisplay index={3} text={'Vestido'} />
+            </li>
+            <li className="carousel__card">
+              <GridDisplay index={1} text={'Remera'} />
+            </li>
+            <li className="carousel__card">
+              <GridDisplay index={2} text={'Short'} />
+            </li>
+          </ul>
+          <i id='right' class="fa-solid fa-chevron-right" />
         </div>
-        <i class="fa-solid fa-chevron-right right" />
       </section>
 
 
       <section className="vento-grid-section">
         <article className="vento-grid__item-container">
           <div className="vento-grid__item vento-item-1">
-            <img src="" alt="" />
-            <div className="vento-grid__item-information">
-              <h3>Remeras</h3>
-              <div>Comprar</div>
-            </div>
+            <VentoSection index={1} />
           </div>
           <div className="vento-grid__item vento-item-2">
-
+            <VentoSection index={4} />
           </div>
           <div className="vento-grid__item vento-item-3">
-            <img src="" alt="" />
-            <div className="vento-grid__item-information">
-              <h3>Remeras</h3>
-              <div>Comprar</div>
-            </div>
+            <VentoSection index={3} />
           </div>
         </article>
       </section>
 
+      <section className='carousel-section2'>
+        <h2 className="carousel-section__title2">Remeras</h2>
+        <div className="carousel__wrapper2">
+          <i id='left' class="fa-solid fa-chevron-left" />
+          <ul className="carousel-container2">
+            <li className="carousel__card2">
+              <GridDisplay index={3} text={'Remera'} variant={2} />
+            </li>
+            <li className="carousel__card2">
+              <GridDisplay index={2} text={'Jeans'} variant={2} />
+            </li>
+            <li className="carousel__card2">
+              <GridDisplay index={1} text={'Camisa'} variant={2} />
+            </li>
+            <li className="carousel__card2">
+              <GridDisplay index={4} text={'Pantalon'} variant={2} />
+            </li>
+            <li className="carousel__card2">
+              <GridDisplay index={3} text={'Vestido'} variant={2} />
+            </li>
+            <li className="carousel__card2">
+              <GridDisplay index={1} text={'Remera'} variant={2} />
+            </li>
+            <li className="carousel__card2">
+              <GridDisplay index={2} text={'Short'} variant={2} />
+            </li>
+          </ul>
+          <i id='right' class="fa-solid fa-chevron-right" />
+        </div>
+      </section>
     </main>
   )
 }

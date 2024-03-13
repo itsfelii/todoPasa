@@ -35,9 +35,20 @@
 @keyframes show2 {
    from {
       opacity: 0;
-      left: 100px;
+      right: 100px;
    }
 
+   to {
+      opacity: 1;
+      right: 0;
+   }
+}
+
+@keyframes show3 {
+   from {
+      opacity: 0;
+      left: 100px;
+   }
    to {
       opacity: 1;
       left: 0;
