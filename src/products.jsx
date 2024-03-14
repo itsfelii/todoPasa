@@ -4,22 +4,17 @@ import { fetchProduct } from './services/Callproduct';
 import { Card, Skeleton, Image } from "@nextui-org/react";
 import { useProduct } from './context/contextoProvider2';
 import { Link } from 'react-router-dom';
+import { useList } from './context/callOrdenate/contextListProvider';
 
 export function GranCarouselImg2({ index }) {
    const [url, setUrl] = useState(null);
-
-   if (url == null) {
-      async function getProducts() {
-         let p = await axios.get("http://localhost:5000/api/products/ordenate")
-         if (p.data.remeras[Number(index)]) {
-            var PRODUCT_NAME = p.data.remeras[Number(index)].nombre
-            return PRODUCT_NAME;
-         }
+   useList().then(res => {
+      if (res.data.remeras[Number(index)] && url == null) {
+         let nombre = res.data.remeras[Number(index)].nombre
+         fetchProduct(nombre).then(response => setUrl(response))
       }
-      getProducts().then(res => {
-         fetchProduct(res).then(response => setUrl(response))
-      });
-   }
+   })
+
    const PRODUCTO = useProduct();
    const changeProduct = () => {
       PRODUCTO.updateProduct({
@@ -61,18 +56,12 @@ export function GranCarouselImg1({ index }) {
 
    const [url, setUrl] = useState(null);
 
-   if (url == null) {
-      async function getProducts() {
-         let p = await axios.get("http://localhost:5000/api/products/ordenate")
-         if (p.data.remeras[Number(index)]) {
-            var PRODUCT_NAME = p.data.remeras[Number(index)].nombre
-            return PRODUCT_NAME;
-         }
+   useList().then(res => {
+      if (res.data.remeras[Number(index)] && url == null) {
+         let nombre = res.data.remeras[Number(index)].nombre
+         fetchProduct(nombre).then(response => setUrl(response))
       }
-      getProducts().then(res => {
-         fetchProduct(res).then(response => setUrl(response))
-      });
-   }
+   })
    // esto se va a ejecutar cuando el homepage actualice el producto para que le diga que este componente rellene los otros datos
 
    return (
@@ -98,20 +87,16 @@ export function GranCarouselImg1({ index }) {
    );
 }
 
-export function GridDisplay({ index, text , variant = 1}) {
+export function GridDisplay({ index, text, variant = 1 }) {
    const [url, setUrl] = useState(null)
-   if (url == null) {
-      async function getProducts() {
-         let p = await axios.get("http://localhost:5000/api/products/ordenate")
-         if (p.data.remeras[Number(index)]) {
-            const PRODUCT_NAME = p.data.remeras[Number(index)].nombre
-            return PRODUCT_NAME;
-         }
+
+   useList().then(res => {
+      if (res.data.remeras[Number(index)] && url == null) {
+         let nombre = res.data.remeras[Number(index)].nombre
+         fetchProduct(nombre).then(response => setUrl(response))
       }
-      getProducts().then(res => {
-         fetchProduct(res).then(response => setUrl(response))
-      });
-   }
+   })
+
    const PRODUCTO = useProduct();
    const changeProduct = () => {
       PRODUCTO.updateProduct({
@@ -153,18 +138,12 @@ export function GridDisplay({ index, text , variant = 1}) {
 export function VentoSection({ index }) {
    const [url, setUrl] = useState(null);
 
-   if (url == null) {
-      async function getProducts() {
-         let p = await axios.get("http://localhost:5000/api/products/ordenate")
-         if (p.data.remeras[Number(index)]) {
-            var PRODUCT_NAME = p.data.remeras[Number(index)].nombre
-            return PRODUCT_NAME;
-         }
+   useList().then(res => {
+      if (res.data.remeras[Number(index)] && url == null) {
+         let nombre = res.data.remeras[Number(index)].nombre
+         fetchProduct(nombre).then(response => setUrl(response))
       }
-      getProducts().then(res => {
-         fetchProduct(res).then(response => setUrl(response))
-      });
-   }
+   })
    // esto se va a ejecutar cuando el homepage actualice el producto para que le diga que este componente rellene los otros datos
 
    return (

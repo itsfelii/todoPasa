@@ -6,6 +6,8 @@ import scrollToTop from "../services/Scroll";
 // product context
 import { useProduct } from "../context/contextoProvider2";
 import { useEffect } from "react";
+import { useList } from "../context/callOrdenate/contextListProvider";
+
 export default function HomePage() {
   scrollToTop();
   const producto = useProduct();
@@ -84,14 +86,15 @@ export default function HomePage() {
  
      // funcionalidad de la flechas
  
-     let arrowBtns2 = document.querySelectorAll('.carousel__wrapper i');
-     let firstCardWidth2 = document.querySelector('.carousel__card').offsetWidth;
+     let arrowBtns2 = document.querySelectorAll('.carousel__wrapper2 i');
+     let firstCardWidth2 = document.querySelector('.carousel__card2 ').offsetWidth;
      arrowBtns2.forEach(btn => {
        btn.addEventListener('click', () => {
-         carousel2.scrollLeft += btn.id === 'left' ? -firstCardWidth2 : firstCardWidth2;
+         carousel2.scrollLeft += btn.id === 'left2' ? -firstCardWidth2 : firstCardWidth2;
        })
      })
   })
+
   return (
     <main>
       <section id='bigCarousel2'>
@@ -153,7 +156,7 @@ export default function HomePage() {
       <section className='carousel-section2'>
         <h2 className="carousel-section__title2">Remeras</h2>
         <div className="carousel__wrapper2">
-          <i id='left' class="fa-solid fa-chevron-left" />
+          <i id='left2' class="fa-solid fa-chevron-left" />
           <ul className="carousel-container2">
             <li className="carousel__card2">
               <GridDisplay index={3} text={'Remera'} variant={2} />
@@ -177,7 +180,7 @@ export default function HomePage() {
               <GridDisplay index={2} text={'Short'} variant={2} />
             </li>
           </ul>
-          <i id='right' class="fa-solid fa-chevron-right" />
+          <i id='right2' class="fa-solid fa-chevron-right" />
         </div>
       </section>
     </main>

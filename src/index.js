@@ -6,6 +6,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import "./index.css";
 import { ContextProvider } from "./context/contextProvider";
 import { ContextProductProvider } from './context/contextoProvider2';
+import { ProductListProvider } from './context/callOrdenate/contextListProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <NextUIProvider>
       <ContextProvider>
         <ContextProductProvider>
-          <App />
+          <ProductListProvider>
+            <App />
+          </ProductListProvider>
         </ContextProductProvider>
       </ContextProvider>
     </NextUIProvider>
