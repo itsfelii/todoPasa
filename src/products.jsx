@@ -124,7 +124,7 @@ export function GridDisplay({ index, text, variant = 1 }) {
          }
          {
             url == null ? (
-               <Card className="space-y-5 rounded-lg" style={{ width: '280px', height: '280px' }}>
+               <Card className="space-y-5 rounded-lg" style={{ width: '260px', height: '260px' }}>
                   <Skeleton style={{ 'border-radius': 'none' }}>
                      <div style={{ height: '50vh' }}></div>
                   </Skeleton>
@@ -163,6 +163,54 @@ export function VentoSection({ index }) {
          {
             url == null ? (
                <Card className="space-y-5 rounded-lg" style={{ width: '47.5vw', height: '100%' }}>
+                  <Skeleton style={{ 'border-radius': 'none' }}>
+                     <div style={{ height: '102vh' }}></div>
+                  </Skeleton>
+               </Card>
+            ) : ''
+         }
+      </>
+   )
+}
+
+
+export function TipoRopaSeccion({ index }) {
+   const [url, setUrl] = useState(null);
+
+   useList().then(res => {
+      if (res.data.remeras[Number(index)] && url == null) {
+         let nombre = res.data.remeras[Number(index)].nombre
+         fetchProduct(nombre).then(response => setUrl(response))
+      }
+   })
+   // esto se va a ejecutar cuando el homepage actualice el producto para que le diga que este componente rellene los otros datos
+
+   const PRODUCTO = useProduct();
+   const changeProduct = () => {
+      PRODUCTO.updateProduct({
+         "nombre": 'remera',
+         "precio": '$30,000',
+         "url": url
+      })
+   }
+   return (
+      <>
+         {
+            url && (
+               <>
+                  <Link to="/Product" onClick={changeProduct}>
+                     <img src={url} alt="imagen de producto" className="flex-product__item-img" />
+                  </Link>
+                  <div>
+                     <h4 className="flex-product__item-title">jeans</h4>
+                     <h4 className="flex-product__item-precio">$00000</h4>
+                  </div>
+               </>
+            )
+         }
+         {
+            url == null ? (
+               <Card className="space-y-5 rounded-lg" style={{ minWidth: '300px', height: '100%' }}>
                   <Skeleton style={{ 'border-radius': 'none' }}>
                      <div style={{ height: '102vh' }}></div>
                   </Skeleton>

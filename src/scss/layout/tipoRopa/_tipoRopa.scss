@@ -15,22 +15,11 @@
          font-size: 20px;
          margin: 0 40px;
       }
-      div{ 
-         display: flex;
-         align-items: center;
-         p {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: .8rem;
-            cursor: pointer;
-         }
-         .flex-product-type-title {
-            font-size: 60px;
-            margin: 0 40px;
-            font-weight: 700;
-            letter-spacing: 3px;
-         }
+      .flex-product-type-title {
+         font-size: 60px;
+         margin: 0 40px;
+         font-weight: 700;
+         letter-spacing: 3px;
       }
    }
 
@@ -40,11 +29,13 @@
 
       .flex-products-filters {
          width: 20vw;
-         transition: width .5s ease , opacity .2s ease;
-         h2  {
+         transition: width .5s ease, opacity .2s ease;
+
+         h2 {
             font-size: 30px;
             margin-bottom: 10px;
          }
+
          ul {
             display: flex;
             flex-direction: column;
@@ -63,16 +54,18 @@
                   gap: 20px;
                   align-items: center;
                   position: relative;
+
                   &::before {
-                     content : "";
+                     content: "";
                      width: 5px;
                      height: 2px;
                      background-color: $color1;
                      transform: rotate(35deg);
-                     position:absolute;
+                     position: absolute;
                      left: 4.5px;
                      bottom: 12px;
                   }
+
                   &::after {
                      content: "";
                      width: 10px;
@@ -87,7 +80,7 @@
                      outline: none;
                      width: 20px;
                      height: 20px;
-                     border:2.7px solid $color2;
+                     border: 2.7px solid $color2;
                      border-radius: 3px;
                      transition: all .3s ease;
 
@@ -123,25 +116,22 @@
                height: 100%;
                width: 100%;
                object-fit: cover;
-               transition: all .5s ease;
 
-               &:hover {
-                  transform: scale(1.027);
-                  outline: 1px solid #000;
-               }
             }
 
             div {
                display: flex;
-               justify-content: space-evenly;
-               align-items: flex-start;
+               flex-direction: column;
+               gap: 0;
 
                .flex-product__item-title {
                   font-size: 20px;
+                  line-height: 25px;
                }
 
                .flex-product__item-precio {
                   font-size: 20px;
+                  line-height: 25px;
                }
             }
          }

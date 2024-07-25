@@ -41,14 +41,14 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-radius: 15px 0 0 15px;
-            background-color: #283745;
+            border-radius: 12px 0 0 12px;
+            background-color: #2e3135;
             height: 100%;
             width: 40%;
             padding: 0 30px;
 
             h2 {
-               font-size: 2.5rem;
+               font-size: 1.7rem;
                color: #d8d8d8;
             }
 
@@ -56,21 +56,23 @@
                font-size: .8rem;
                margin: 15px 0;
                color: #8f8f8f;
+               text-wrap: balance;
             }
 
             input {
-               margin: 15px 0 0 0;
+               margin: 30px auto 0 auto;
+               width: 80%;
                background-color: transparent;
                outline: none;
-               border: 2px solid #949BA2;
+               border: 2px solid #575a5c;
                border-radius: 15px;
                padding: 5px 20px;
-               color: #949BA2;
+               color: #676b6d;
                cursor: pointer;
                transition: all .5s ease;
 
                &:hover {
-                  background-color: #949BA2;
+                  background-color: #575a5c;
                   color: #fff;
                   box-shadow: 0 2px 5px rgba(0,0,0,.1);
                }
@@ -85,7 +87,7 @@
             justify-content: center;
             text-align: center;
             background-color: #f8f8f8;
-            border-radius: 0 15px 15px 0;
+            border-radius: 0 12px 12px 0;
 
             .form-information-childs {
                padding: 0 30px;
@@ -107,13 +109,13 @@
                      padding: 15px; 
                      cursor: pointer;
                      margin: 0 10px; 
-                     color: #2A3A48;
-                     border: 2px solid #2A3A48;
+                     color: #494d50;
+                     border: 2px solid #494d50;
                      transition: background-color .4s ease;
                      box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
                      &:hover {
-                        background-color: #2A3A48;
+                        background-color: #494d50;
                         color: #fff;
                      }
                   }
@@ -149,17 +151,17 @@
                   }
 
                   input[type='submit'] {
-                     color: #2A3A48;
+                     color: #494d50;
                      border-radius: 15px;
                      padding: 2px 50px ;
                      cursor: pointer;
                      margin-top: 10px; 
                      transition: all .5s ease;
-                     border: 2px solid #2A3A48;
+                     border: 2px solid #494d50;
                      box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
                      &:hover {
-                        background-color: #2A3A48;
+                        background-color: #494d50;
                         color: #fff;
                      }
                   }

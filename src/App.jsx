@@ -12,9 +12,10 @@ import Mallas from "./componentes/secondary-components/Mallas";
 import Sacos from "./componentes/secondary-components/Sacos";
 import Sesion from "./componentes/Sesion";
 import StockManager from "./componentes/StockManager";
+import Ayuda from "./componentes/Ayuda";
 // hookers
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 // Next ui
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } from "@nextui-org/react";
 import { Badge } from "@nextui-org/react";
@@ -70,10 +71,10 @@ function App() {
   const handleSearch = (e) => {
     let results = document.getElementById('nav__search-results-js');
     if (e.target.value == '') {
-      results.style.top = '-500px';
+      results.style.height = '0';
     } else {
       // se hace la busqueda aca 
-      results.style.top = '39px';
+      results.style.height = '200px';
     }
   }
 
@@ -81,6 +82,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        {/* barra de navegacion */}
         <header className="App-header">
           <nav className="nav" id='navbar'>
             <div className="nav-section-offer">
@@ -97,8 +99,10 @@ function App() {
                   <div className="nav__search-results" id='nav__search-results-js'>
                   </div>
                 </div>
+                {/* dropdown de perfil  */}
                 <Dropdown placement="bottom-end">
                   <DropdownTrigger>
+                    {/* avatar del usuario */}
                     <Avatar
                       isBordered
                       as="button"
@@ -108,23 +112,30 @@ function App() {
                     />
                   </DropdownTrigger>
                   <DropdownMenu aria-label="Profile Actions" variant="flat" style={{ width: '300px' }}>
+                    {/* seccion de nombre de usuario del dropdown */}
                     <DropdownItem key="profile" className="h-12 gap-2">
                       <p className="font-semibold">Signed in as {nombre ? nombre : 'user'}</p>
                     </DropdownItem>
+                    {/* seccion de stock manager solo para administradores*/}
                     <DropdownItem key="team_settings">
                       <Link to='/StockManager'>
                         <i class="fa-solid fa-box" style={{ 'margin-right': '10px' }} />
                         Stock-manager
                       </Link>
                     </DropdownItem>
+                    {/* boton de configuraciones */}
                     <DropdownItem key="configurations">
                       <i class="fa-solid fa-gear" style={{ 'margin-right': '9px' }} />
                       Configuraciones
                     </DropdownItem>
+                    {/* seccion de ayuda de la pagina del dropdown */}
                     <DropdownItem key="help_and_feedback">
-                      <i class="fa-solid fa-circle-info" style={{ 'margin-right': '10px' }}></i>
-                      Ayuda
+                      <Link to='/Ayuda'>
+                        <i class="fa-solid fa-circle-info" style={{ 'margin-right': '10px' }}></i>
+                        Ayuda
+                      </Link>
                     </DropdownItem>
+                    {/* codigo que determina si hay un usuario logeado o se tiene que logear */}
                     {nombre != '' && (
                       <DropdownItem key="logout" color="danger" onClick={() => {
                         scrollToTop();
@@ -163,13 +174,14 @@ function App() {
                     </div>
                   </Link>
                 </Badge>
-
+                {/* boton de carrito desplegable */}
                 <div className="floating-container" id='cart-floating-component'>
                   <button onClick={closeComponent}>
                     <i class='bx bxs-x-circle'></i>
                   </button>
                   <div className="floating-component">
                     <article>
+                      {/* producto de prueba */}
                       <div className="floating-component__cart-product">
                         <div className="floating-component__cart-product-img-container">
                           <img src={require('./assets/img/jeans.jpg')} alt="" />
@@ -180,6 +192,7 @@ function App() {
                         </div>
                         <div className='floating-component__cart-product-price-container'>
                           <h3>Precio</h3>
+                          {/* boton para eliminar del carrito */}
                           <i class='bx bx-trash' onClick={(e) => {
                             let closest = e.target.closest('.floating-component__cart-product');
                             closest.parentNode.removeChild(closest);
@@ -188,6 +201,7 @@ function App() {
                       </div>
                       <hr />
                     </article>
+                    {/* boton de compra */}
                     <div className="floating-component__buy-btn">
                       <Link to='/ShoppingCart' onClick={closeComponent}>
                         <p>Iniciar compra</p>
@@ -200,6 +214,7 @@ function App() {
             </div>
           </nav>
           <div className="nav-section-2">
+            {/* seccion de navegacion */}
             <div className="nav__filter">
               <Link to="/Jeans">Jeans</Link>
               <Link to="/Remeras">Remeras</Link>
@@ -227,7 +242,12 @@ function App() {
           <Route path='/Mallas' element={<Mallas />} />
           <Route path='/Sacos' element={<Sacos />} />
           <Route path='/StockManager' element={<StockManager />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path='/Ayuda' element={<Ayuda />} />
+          <Route path="/" element={
+            <Suspense>
+              <HomePage />
+            </Suspense>
+          } />
         </Routes>
 
         <Footer />

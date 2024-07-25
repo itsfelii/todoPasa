@@ -81,15 +81,15 @@
             margin: 0 0 15px 0;
             background-color: #2D3F4B;
             color: #fff;
-            border-radius: 20px;
+            border-radius: 0 10px 10px 10px;
             height: 60px;
             width: 320px;
             transition: all .3s;
 
             &:hover {
-               background-color: #33434e;
-               transform: scale(0.98);
+               transform: scale(1.005);
                cursor: pointer;
+               border-radius: 10px;
             }
          }
       }
